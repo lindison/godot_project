@@ -1,0 +1,281 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://Character/Samurai02/03-Attack/2D_SM02_Attack_007.png" type="Texture" id=1]
+[ext_resource path="res://Character/Samurai02/03-Attack/2D_SM02_Attack_006.png" type="Texture" id=2]
+[ext_resource path="res://Character/Samurai02/03-Attack/2D_SM02_Attack_001.png" type="Texture" id=3]
+[ext_resource path="res://Character/Samurai02/02-Run/2D_SM02_Run_007.png" type="Texture" id=4]
+[ext_resource path="res://Character/Samurai02/03-Attack/2D_SM02_Attack_002.png" type="Texture" id=5]
+[ext_resource path="res://Character/Samurai02/02-Run/2D_SM02_Run_002.png" type="Texture" id=6]
+[ext_resource path="res://Character/Samurai02/02-Run/2D_SM02_Run_006.png" type="Texture" id=7]
+[ext_resource path="res://Character/Samurai02/02-Run/2D_SM02_Run_004.png" type="Texture" id=8]
+[ext_resource path="res://Character/Samurai02/03-Attack/2D_SM02_Attack_004.png" type="Texture" id=9]
+[ext_resource path="res://Character/Samurai02/03-Attack/2D_SM02_Attack_005.png" type="Texture" id=10]
+[ext_resource path="res://Character/Samurai02/03-Attack/2D_SM02_Attack_003.png" type="Texture" id=11]
+[ext_resource path="res://Character/Samurai02/03-Attack/2D_SM02_Attack_000.png" type="Texture" id=12]
+[ext_resource path="res://Character/Samurai02/02-Run/2D_SM02_Run_005.png" type="Texture" id=13]
+[ext_resource path="res://Character/Samurai02/02-Run/2D_SM02_Run_003.png" type="Texture" id=14]
+[ext_resource path="res://Character/Samurai02/02-Run/2D_SM02_Run_000.png" type="Texture" id=15]
+[ext_resource path="res://Character/Samurai02/02-Run/2D_SM02_Run_001.png" type="Texture" id=16]
+[ext_resource path="res://Player.gd" type="Script" id=17]
+[ext_resource path="res://Tiles/light.png" type="Texture" id=18]
+[ext_resource path="res://Camera.gd" type="Script" id=19]
+[ext_resource path="res://Character/Samurai02/01-Idle/01-Normal/2D_SM02_Idle_006.png" type="Texture" id=20]
+[ext_resource path="res://Character/Samurai02/01-Idle/01-Normal/2D_SM02_Idle_005.png" type="Texture" id=21]
+[ext_resource path="res://PlayerFSM.gd" type="Script" id=22]
+[ext_resource path="res://Character/Samurai02/01-Idle/01-Normal/2D_SM02_Idle_007.png" type="Texture" id=23]
+[ext_resource path="res://Character/Samurai02/04-Jump/2D_SM02_JumpUP_000.png" type="Texture" id=24]
+[ext_resource path="res://Character/Samurai02/01-Idle/01-Normal/2D_SM02_Idle_000.png" type="Texture" id=25]
+[ext_resource path="res://Character/Samurai02/01-Idle/01-Normal/2D_SM02_Idle_002.png" type="Texture" id=26]
+[ext_resource path="res://Character/Samurai02/01-Idle/01-Normal/2D_SM02_Idle_001.png" type="Texture" id=27]
+[ext_resource path="res://Character/Samurai02/01-Idle/01-Normal/2D_SM02_Idle_003.png" type="Texture" id=28]
+[ext_resource path="res://Character/Samurai02/01-Idle/01-Normal/2D_SM02_Idle_004.png" type="Texture" id=29]
+[ext_resource path="res://Character/Samurai02/04-Jump/2D_SM02_FallDown_000.png" type="Texture" id=30]
+[ext_resource path="res://ScreenShake.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Healthbar.tscn" type="PackedScene" id=33]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "idle",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": true,
+"name": "jump",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": true,
+"name": "fall",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "wall_slide",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "attack",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 23.9317, 56.9381 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 24.1732, 5.02989 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 19.9801
+height = 64.1641
+
+[sub_resource type="Animation" id=5]
+resource_name = "damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "flash"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 10.0649, 5.29732 )
+collision_layer = 2
+collision_mask = 301
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PlayerFSM" type="Node2D" parent="."]
+script = ExtResource( 22 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 1 )
+animation = "wall_slide"
+
+[node name="Camera" type="Camera2D" parent="."]
+light_mask = 0
+offset = Vector2( 20, 0 )
+current = true
+limit_left = -2400
+limit_top = -1056
+limit_right = 6000
+limit_bottom = 750
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 3.0
+drag_margin_left = 0.1
+drag_margin_top = 0.75
+drag_margin_right = 0.1
+script = ExtResource( 19 )
+
+[node name="ShiftTween" type="Tween" parent="Camera"]
+
+[node name="ScreenShake" parent="Camera" instance=ExtResource( 31 )]
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 11.9865, -7.11696 )
+shape = SubResource( 2 )
+
+[node name="CheckInteract" type="RayCast2D" parent="."]
+position = Vector2( 10, -20 )
+enabled = true
+cast_to = Vector2( 0, 45 )
+collision_mask = 40
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="CheckGround" type="Node2D" parent="."]
+
+[node name="Left" type="RayCast2D" parent="CheckGround"]
+position = Vector2( -10, 49 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 2147483905
+
+[node name="Right" type="RayCast2D" parent="CheckGround"]
+position = Vector2( 33, 49 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 257
+
+[node name="Middle" type="RayCast2D" parent="CheckGround"]
+position = Vector2( 11, 49 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 257
+
+[node name="fire" type="Position2D" parent="."]
+show_behind_parent = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 12.0271, 42.8145 )
+collision_layer = 0
+collision_mask = 257
+
+[node name="OneWayReset" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 3 )
+
+[node name="Light" type="Light2D" parent="."]
+position = Vector2( 9.54094, -1.68373 )
+scale = Vector2( 0.571861, 0.53979 )
+texture = ExtResource( 18 )
+shadow_enabled = true
+
+[node name="ScreenExit" type="VisibilityNotifier2D" parent="."]
+
+[node name="WallRaycasts" type="Node2D" parent="."]
+
+[node name="LeftWallRaycasts" type="Node2D" parent="WallRaycasts"]
+
+[node name="RayCast2D" type="RayCast2D" parent="WallRaycasts/LeftWallRaycasts"]
+position = Vector2( -11.3086, -42.509 )
+enabled = true
+cast_to = Vector2( -5, 0 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="WallRaycasts/LeftWallRaycasts"]
+position = Vector2( -11.1646, 35.369 )
+enabled = true
+cast_to = Vector2( -5, 0 )
+
+[node name="RightWallRaycasts" type="Node2D" parent="WallRaycasts"]
+position = Vector2( 3.36739, -4.20923 )
+
+[node name="RayCast2D" type="RayCast2D" parent="WallRaycasts/RightWallRaycasts"]
+position = Vector2( 31.6995, -38.2081 )
+enabled = true
+cast_to = Vector2( 5, 0 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="WallRaycasts/RightWallRaycasts"]
+position = Vector2( 31.7096, 39.2862 )
+enabled = true
+cast_to = Vector2( 5, 0 )
+
+[node name="WallSlideCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="WallSlideStickyTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Hitbox" parent="." instance=ExtResource( 32 )]
+position = Vector2( -10.0649, -5.29732 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 21.719, 2.64866 )
+shape = SubResource( 4 )
+
+[node name="InvulnerabilityTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="DamageAnimation" type="AnimationPlayer" parent="."]
+anims/damage = SubResource( 5 )
+anims/flash = SubResource( 6 )
+anims/idle = SubResource( 7 )
+
+[node name="Healthbar" parent="." instance=ExtResource( 33 )]
+margin_left = -36.0
+margin_top = -85.0
+margin_right = 213.0
+margin_bottom = -45.0
+rect_scale = Vector2( 0.4, 0.4 )
+[connection signal="grounded_updater" from="." to="Camera" method="_on_Player_grounded_updater"]
+[connection signal="health_updated" from="." to="Healthbar" method="_on_Player_health_updated"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="screen_exited" from="ScreenExit" to="." method="_on_ScreenExit_screen_exited"]
+[connection signal="timeout" from="WallSlideStickyTimer" to="PlayerFSM" method="_on_WallSlideStickyTimer_timeout"]
+[connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]

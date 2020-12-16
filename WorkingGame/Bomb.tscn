@@ -1,0 +1,141 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Bomb.gd" type="Script" id=1]
+[ext_resource path="res://Tiles/explosion.png" type="Texture" id=2]
+[ext_resource path="res://Tiles/bomb.png" type="Texture" id=3]
+[ext_resource path="res://Tiles/bombFlash.png" type="Texture" id=4]
+[ext_resource path="res://Music/explode.wav" type="AudioStream" id=5]
+[ext_resource path="res://BombDamage.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "bomb",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "bomb_explode",
+"speed": 12.0
+} ]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 65, 0, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 130, 0, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 195, 0, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 260, 0, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 325, 0, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 390, 0, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 66, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 65, 66, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 130, 66, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 195, 66, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 260, 66, 65, 66 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 325, 66, 65, 66 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), null ],
+"loop": false,
+"name": "explosion",
+"speed": 30.0
+} ]
+
+[sub_resource type="CircleShape2D" id=16]
+radius = 26.1886
+
+[sub_resource type="CircleShape2D" id=17]
+radius = 288.111
+
+[node name="Bomb" type="KinematicBody2D"]
+scale = Vector2( 0.4, 0.4 )
+collision_layer = 64
+collision_mask = 261
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="bomb_anim" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "bomb_explode"
+frame = 1
+
+[node name="explosion" type="AnimatedSprite" parent="."]
+visible = false
+scale = Vector2( 10, 10 )
+frames = SubResource( 15 )
+animation = "explosion"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.834274, 6.67419 )
+shape = SubResource( 16 )
+
+[node name="BombDamage" type="Area2D" parent="."]
+position = Vector2( 58.3992, -11.6798 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BombDamage"]
+position = Vector2( -58.2026, 14.1031 )
+shape = SubResource( 17 )
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="BombTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+[connection signal="area_entered" from="BombDamage" to="BombDamage" method="_on_BombDamage_area_entered"]
+[connection signal="timeout" from="BombTimer" to="." method="_on_BombTimer_timeout"]

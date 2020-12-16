@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Background/parallax-mountain-trees.png" type="Texture" id=1]
+[ext_resource path="res://Background/parallax-mountain-foreground-trees.png" type="Texture" id=2]
+[ext_resource path="res://Background/parallax-mountain-montain-far.png" type="Texture" id=3]
+[ext_resource path="res://Background/parallax-mountain-mountains.png" type="Texture" id=4]
+[ext_resource path="res://Background/parallax-mountain-bg.png" type="Texture" id=5]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 513.524, 299.225 )
+scale = Vector2( 3.76044, 3.72835 )
+texture = ExtResource( 5 )
+
+[node name="Mountain" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.01, 0.01 )
+motion_mirroring = Vector2( 1024, 1 )
+
+[node name="Sprite" type="Sprite" parent="Mountain"]
+scale = Vector2( 3.76628, 3.76803 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="SmallMountain" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1024, 1 )
+
+[node name="Sprite" type="Sprite" parent="SmallMountain"]
+scale = Vector2( 1.87832, 3.71842 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="FarTrees" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 1024, 1 )
+
+[node name="Sprite" type="Sprite" parent="FarTrees"]
+scale = Vector2( 1.87832, 3.69858 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="CloseTrees" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 1024, 1 )
+
+[node name="Sprite" type="Sprite" parent="CloseTrees"]
+scale = Vector2( 1.88124, 3.71842 )
+texture = ExtResource( 2 )
+centered = false

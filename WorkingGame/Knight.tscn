@@ -1,0 +1,293 @@
+[gd_scene load_steps=51 format=2]
+
+[ext_resource path="res://KnightFSM.gd" type="Script" id=1]
+[ext_resource path="res://Knight.gd" type="Script" id=2]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Fall/HeroKnight_Fall_3.png" type="Texture" id=3]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Run/HeroKnight_Run_0.png" type="Texture" id=4]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Idle/HeroKnight_Idle_2.png" type="Texture" id=5]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Idle/HeroKnight_Idle_3.png" type="Texture" id=6]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Idle/HeroKnight_Idle_4.png" type="Texture" id=7]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_0.png" type="Texture" id=8]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_3.png" type="Texture" id=9]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Idle/HeroKnight_Idle_1.png" type="Texture" id=10]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_4.png" type="Texture" id=11]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Jump/HeroKnight_Jump_0.png" type="Texture" id=12]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Fall/HeroKnight_Fall_1.png" type="Texture" id=13]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Run/HeroKnight_Run_1.png" type="Texture" id=14]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Fall/HeroKnight_Fall_0.png" type="Texture" id=15]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Jump/HeroKnight_Jump_1.png" type="Texture" id=16]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Fall/HeroKnight_Fall_2.png" type="Texture" id=17]
+[ext_resource path="res://Tiles/light.png" type="Texture" id=18]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Idle/HeroKnight_Idle_6.png" type="Texture" id=19]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Idle/HeroKnight_Idle_7.png" type="Texture" id=20]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Idle/HeroKnight_Idle_5.png" type="Texture" id=21]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Jump/HeroKnight_Jump_2.png" type="Texture" id=22]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Idle/HeroKnight_Idle_0.png" type="Texture" id=23]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_5.png" type="Texture" id=24]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_1.png" type="Texture" id=25]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_2.png" type="Texture" id=26]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Run/HeroKnight_Run_9.png" type="Texture" id=27]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Run/HeroKnight_Run_3.png" type="Texture" id=28]
+[ext_resource path="res://Healthbar.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=30]
+[ext_resource path="res://ScreenShake.tscn" type="PackedScene" id=31]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Run/HeroKnight_Run_5.png" type="Texture" id=32]
+[ext_resource path="res://Camera.gd" type="Script" id=33]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Run/HeroKnight_Run_4.png" type="Texture" id=34]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Run/HeroKnight_Run_6.png" type="Texture" id=35]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Run/HeroKnight_Run_7.png" type="Texture" id=36]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Run/HeroKnight_Run_2.png" type="Texture" id=37]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/Run/HeroKnight_Run_8.png" type="Texture" id=38]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/WallSlide/HeroKnight_Slide_1.png" type="Texture" id=39]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/WallSlide/HeroKnight_Slide_2.png" type="Texture" id=40]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/WallSlide/HeroKnight_Slide_3.png" type="Texture" id=41]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/WallSlide/HeroKnight_Slide_4.png" type="Texture" id=42]
+[ext_resource path="res://GameSprites/Hero Knight/Sprites/HeroKnight/WallSlide/HeroKnight_Slide_0.png" type="Texture" id=43]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "idle",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "fall",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "wall_slide",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 16 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "jump",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 14 ), ExtResource( 37 ), ExtResource( 28 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 38 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "walk",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "attack",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 22.1541, 47.2207 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 24.1732, 5.02989 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 15.3389
+height = 53.3597
+
+[sub_resource type="Animation" id=5]
+resource_name = "damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "flash"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Knight" type="KinematicBody2D"]
+position = Vector2( 10.0649, 5.29732 )
+collision_layer = 2
+collision_mask = 301
+script = ExtResource( 2 )
+max_health = 150.0
+
+[node name="PlayerFSM" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -7.56807, -7.14763 )
+scale = Vector2( 2.5, 2.5 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="Camera" type="Camera2D" parent="."]
+light_mask = 0
+offset = Vector2( 20, 0 )
+current = true
+limit_left = -2400
+limit_top = -1056
+limit_right = 6000
+limit_bottom = 750
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 3.0
+drag_margin_left = 0.1
+drag_margin_top = 0.75
+drag_margin_right = 0.1
+script = ExtResource( 33 )
+
+[node name="ShiftTween" type="Tween" parent="Camera"]
+
+[node name="ScreenShake" parent="Camera" instance=ExtResource( 31 )]
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2( -9.87679, 10.5419 )
+shape = SubResource( 2 )
+
+[node name="CheckInteract" type="RayCast2D" parent="."]
+position = Vector2( -3.45435, -16.6364 )
+enabled = true
+cast_to = Vector2( 0, 45 )
+collision_mask = 40
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="CheckGround" type="Node2D" parent="."]
+
+[node name="Left" type="RayCast2D" parent="CheckGround"]
+position = Vector2( -27.6588, 56.9885 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 2147483905
+
+[node name="Right" type="RayCast2D" parent="CheckGround"]
+position = Vector2( 10.7162, 56.9885 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 257
+
+[node name="Middle" type="RayCast2D" parent="CheckGround"]
+position = Vector2( -10.1338, 57.0499 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 257
+
+[node name="fire" type="Position2D" parent="."]
+show_behind_parent = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 12.0271, 42.8145 )
+collision_layer = 0
+collision_mask = 257
+
+[node name="OneWayReset" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -22.7042, 6.72717 )
+shape = SubResource( 3 )
+
+[node name="Light" type="Light2D" parent="."]
+visible = false
+position = Vector2( 9.54094, -1.68373 )
+scale = Vector2( 0.571861, 0.53979 )
+texture = ExtResource( 18 )
+shadow_enabled = true
+
+[node name="ScreenExit" type="VisibilityNotifier2D" parent="."]
+
+[node name="WallRaycasts" type="Node2D" parent="."]
+
+[node name="LeftWallRaycasts" type="Node2D" parent="WallRaycasts"]
+
+[node name="RayCast2D" type="RayCast2D" parent="WallRaycasts/LeftWallRaycasts"]
+position = Vector2( -30.6492, -21.907 )
+enabled = true
+cast_to = Vector2( -5, 0 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="WallRaycasts/LeftWallRaycasts"]
+position = Vector2( -30.5052, 36.6304 )
+enabled = true
+cast_to = Vector2( -5, 0 )
+
+[node name="RightWallRaycasts" type="Node2D" parent="WallRaycasts"]
+position = Vector2( 3.36739, -4.20923 )
+
+[node name="RayCast2D" type="RayCast2D" parent="WallRaycasts/RightWallRaycasts"]
+position = Vector2( 6.89305, -16.3448 )
+enabled = true
+cast_to = Vector2( 5, 0 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="WallRaycasts/RightWallRaycasts"]
+position = Vector2( 7.32359, 42.2293 )
+enabled = true
+cast_to = Vector2( 5, 0 )
+
+[node name="WallSlideCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="WallSlideStickyTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Hitbox" parent="." instance=ExtResource( 30 )]
+position = Vector2( -10.0649, -5.29732 )
+collision_layer = 2
+entity_path = NodePath("../../Knight")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 1.11704, 14.8417 )
+shape = SubResource( 4 )
+
+[node name="InvulnerabilityTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="DamageAnimation" type="AnimationPlayer" parent="."]
+anims/damage = SubResource( 5 )
+anims/flash = SubResource( 6 )
+anims/idle = SubResource( 7 )
+
+[node name="Healthbar" parent="." instance=ExtResource( 29 )]
+margin_left = -36.0
+margin_top = -85.0
+margin_right = 213.0
+margin_bottom = -45.0
+rect_scale = Vector2( 0.4, 0.4 )
+[connection signal="grounded_updater" from="." to="Camera" method="_on_Player_grounded_updater"]
+[connection signal="health_updated" from="." to="Healthbar" method="_on_Player_health_updated"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="screen_exited" from="ScreenExit" to="." method="_on_ScreenExit_screen_exited"]
+[connection signal="timeout" from="WallSlideStickyTimer" to="PlayerFSM" method="_on_WallSlideStickyTimer_timeout"]
+[connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]

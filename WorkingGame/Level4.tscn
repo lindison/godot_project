@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GameSprites/CrystalWorld/02. Crystal World/background01.png" type="Texture" id=1]
+[ext_resource path="res://GameSprites/Mossy Tileset/Mossy - MossyHills.png" type="Texture" id=2]
+[ext_resource path="res://Gnome.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameSprites/Assets 1024 Cave/Cave - Floor.png" type="Texture" id=4]
+[ext_resource path="res://GameSprites/CrystalWorld/02. Crystal World/background_obj02.png" type="Texture" id=5]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 276.997, 522.135, 234.137, 520.548, 201.595, 537.216, 184.134, 538.803, 176.991, 551.502, 174.61, 565.789, 172.228, 595.156, 193.658, 604.68, 210.326, 611.03, 248.424, 609.443, 277.791, 607.061, 280.965, 584.838, 281.759, 564.202, 288.902, 533.247 )
+
+[node name="Level4" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.793701, 5.55591 )
+scale = Vector2( 2.13183, 2.2063 )
+z_index = -500
+texture = ExtResource( 1 )
+centered = false
+
+[node name="MossHalfHill" type="KinematicBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="MossHalfHill"]
+position = Vector2( 260.334, 535.748 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 637.164, 22.9139, 1261.42, 532.657 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MossHalfHill"]
+position = Vector2( 260, 535 )
+polygon = PoolVector2Array( -26.6566, -15.2456, -56.8172, 1.42212, -75.866, 1.42212, -106.82, 9.35913, -120.313, 33.9638, -140.156, 47.4567, -170.316, 54.6, -161.586, 66.5056, 166.213, 68.093, 165.419, 56.9811, 153.513, 49.8378, 142.402, 38.726, 108.272, 14.915, 74.1434, 5.39063, 28.9024, -3.34009, 20.1718, -14.4519 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="MossHalfHill"]
+occluder = SubResource( 1 )
+
+[node name="MossBox" type="KinematicBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="MossBox"]
+position = Vector2( 546.86, 517.493 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1437.33, 1568.32, 605.834, 442.2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MossBox"]
+position = Vector2( 558.431, 477.06 )
+polygon = PoolVector2Array( -18.7196, 11.7402, -36.9747, 18.0898, -49.674, 25.2331, -58.4046, 31.5827, -59.992, 44.2819, -69.5164, 60.1559, -71.8975, 73.6488, -39.3558, 82.3795, -5.22668, 83.1732, 23.3465, 75.2362, 32.8709, 63.3307, 16.2032, 51.4252, 22.5528, 33.9638, 27.315, 14.1213, 15.4095, 7.7717, 5.88513, 4.59689 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="MossBox"]
+position = Vector2( 307.162, -49.2094 )
+occluder = SubResource( 1 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 1160.97, 600.304 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 4.05069, 781.881, 1548.28, 203.92 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D"]
+polygon = PoolVector2Array( 1142.61, 554.329, 953.831, 552.441, 900.974, 533.564, 721.638, 554.329, 576.282, 565.656, 470.568, 597.747, 651.792, 629.839, 846.23, 644.941, 887.76, 671.37, 1131.28, 631.727, 1442.76, 635.502, 1733.47, 637.39, 1867.5, 609.074, 1759.9, 582.645, 1567.35, 550.554, 1293.63, 550.554 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="."]
+z_index = -100
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D2"]
+position = Vector2( 762.65, 447.396 )
+z_index = 50
+texture = ExtResource( 5 )
+
+[node name="Gnome" parent="." instance=ExtResource( 3 )]
+position = Vector2( 955.2, 490.814 )
+scale = Vector2( 0.2, 0.2 )

@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fonts/Merriweather-Black.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://GameOver.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="GameOver" type="Popup"]
+pause_mode = 2
+visible = true
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 924.0
+margin_bottom = 500.0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+margin_right = 824.0
+margin_bottom = 400.0
+color = Color( 1, 1, 1, 0.427451 )
+
+[node name="Label" type="Label" parent="MarginContainer/ColorRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -145.5
+margin_right = 145.5
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "You have died!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="ToolButton" parent="MarginContainer/ColorRect"]
+margin_left = 135.818
+margin_top = 116.255
+margin_right = 257.818
+margin_bottom = 163.255
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 1, 0, 1 )
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelSelect" type="ToolButton" parent="MarginContainer/ColorRect"]
+margin_left = 140.308
+margin_top = 173.942
+margin_right = 322.308
+margin_bottom = 220.942
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 1, 0, 1 )
+text = "LevelSelect"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterSelect" type="ToolButton" parent="MarginContainer/ColorRect"]
+margin_left = 140.171
+margin_top = 232.768
+margin_right = 389.171
+margin_bottom = 279.768
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 1, 0, 1 )
+text = "CharacterSelect"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MarginContainer/ColorRect/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/LevelSelect" to="." method="_on_LevelSelect_pressed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/CharacterSelect" to="." method="_on_CharacterSelect_pressed"]

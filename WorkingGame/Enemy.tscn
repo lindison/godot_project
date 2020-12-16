@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Character/PNG/Zombie/Poses/zombie_walk2.png" type="Texture" id=1]
+[ext_resource path="res://Character/PNG/Zombie/Poses/zombie_walk1.png" type="Texture" id=2]
+[ext_resource path="res://Enemy.gd" type="Script" id=3]
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://DamageArea.gd" type="Script" id=5]
+[ext_resource path="res://Character/PNG/Zombie/Poses/zombie_duck.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "walk",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 19.8438, 38.4643 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 15.9382
+height = 55.6889
+
+[node name="Enemy" type="KinematicBody2D"]
+position = Vector2( -3.62228, 2.67733 )
+collision_layer = 2147483648
+collision_mask = 257
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.157494, 0.31498 )
+frames = SubResource( 1 )
+animation = "dead"
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.994346, 16.0632 )
+shape = SubResource( 2 )
+
+[node name="LedgeDetect" type="RayCast2D" parent="."]
+position = Vector2( 24.6545, 6.72696 )
+enabled = true
+collision_mask = 257
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DamageArea"]
+polygon = PoolVector2Array( -10.3433, -27.7465, -0.988835, -33.5373, -1.87973, -29.5283, 17.72, -29.9738, 18.1655, -26.8556, 24.8472, -25.5193, 23.0654, -8.14674, 19.0564, 7.88944, 27.5199, 14.5712, 28.4108, 19.0257, 28.8563, 27.9347, 32.4199, 35.5073, 31.529, 39.5163, 19.0564, 52.4344, 7.92015, 41.2981, 7.92015, 35.0619, -12.1251, 49.3162, -24.5977, 41.7436, -13.016, 30.1619, -20.1432, 25.7074, -25.4886, 37.7345, -33.0612, 37.2891, -22.3704, 14.5712, -17.025, 4.32584, -21.4795, -6.81039, -23.7068, -17.9466 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 4 )]
+collision_layer = 4
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 1.33635, 11.1362 )
+shape = SubResource( 3 )
+[connection signal="area_entered" from="DamageArea" to="DamageArea" method="_on_DamageArea_area_entered"]

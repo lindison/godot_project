@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GameSprites/Mossy Tileset/Mossy - TileSet.png" type="Texture" id=1]
+[ext_resource path="res://Adventurer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameSprites/Mossy Tileset/Mossy - MossyHills.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 413.187, 101.506 )
+
+[node name="Level12" type="Node2D"]
+
+[node name="Land" type="Node2D" parent="."]
+
+[node name="ShortLand2" type="KinematicBody2D" parent="Land"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Land/ShortLand2"]
+position = Vector2( 101.022, 579.19 )
+scale = Vector2( 0.2, 0.2 )
+shape = SubResource( 1 )
+
+[node name="ShortLand" type="Sprite" parent="Land/ShortLand2"]
+position = Vector2( 101.022, 579.19 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 204.971, 1545.98, 1126.45, 475.346 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Land"]
+
+[node name="Sprite" type="Sprite" parent="Land/KinematicBody2D"]
+position = Vector2( 322.242, 538.129 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 38.1191, 1480.08, 1356.73, 488.032 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Land/KinematicBody2D"]
+position = Vector2( 319.068, 552.415 )
+polygon = PoolVector2Array( -29.0573, -28.5071, -44.1593, -13.4052, -78.6107, 5.94427, -116.366, 8.77588, -117.31, 29.0692, 32.7664, 29.5411, 127.154, 27.6534, 119.131, 15.8549, 65.3301, -2.5506, 28.0471, -21.4281, 11.0573, -28.9791 )
+
+[node name="Adventurer" parent="." instance=ExtResource( 2 )]
+position = Vector2( 103.461, 481.629 )
