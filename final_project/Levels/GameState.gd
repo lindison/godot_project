@@ -23,6 +23,8 @@ func update_GUI():
 	
 func coin_up():
 	coins += 1
+	if coins == 10:
+		get_tree().change_scene("res://LooneyLips.tscn")
 	update_GUI()
 	var multiple_of_coins = (coins % target_number_of_coins) == 0
 	if multiple_of_coins:

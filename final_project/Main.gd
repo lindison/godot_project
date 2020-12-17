@@ -39,6 +39,9 @@ func _process(delta):
 		level += 1
 		time_left += 5
 		spawn_coins()
+		print(level)
+		if level == 2:
+			get_tree().change_scene("res://Levels/Level1.tscn")
 		
 func _on_GameTimer_timeout():
 	time_left -= 1
