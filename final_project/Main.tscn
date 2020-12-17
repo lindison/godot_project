@@ -16,8 +16,8 @@ playtime = 30
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.56122
-margin_right = 1.56116
+margin_left = 2.56122
+margin_right = 2.56116
 texture = ExtResource( 1 )
 stretch_mode = 2
 __meta__ = {
@@ -35,6 +35,7 @@ position = Vector2( 240, 350 )
 [node name="GameTimer" type="Timer" parent="."]
 
 [node name="Coin" parent="." instance=ExtResource( 4 )]
+position = Vector2( 405, 227 )
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="hurt" from="Player" to="." method="_on_Player_hurt"]
 [connection signal="pickup" from="Player" to="." method="_on_Player_pickup"]

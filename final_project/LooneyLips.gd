@@ -2,13 +2,8 @@ extends Control
 
 var player_words = []
 var template = [
-		{
-		"prompts" : ["city name" , "adjective" , "adjective" , "color" , "cartoon character" , "place" , "verb" , "animal"],
-		"story" : "%s city is so exciting! Everything is so %s ! All the buildings are %s and there's a big river that's %s. I can't wait to see %s at the %s. Then we're going to go %s the %s."
-		},
-		{
-		"prompts" : ["a name" , "a noun" , "action" , "adjective"],
-		"story" : "Once upon a time %s , a %s person, %s in the face and was %s "
+		{"prompts" : ["a teacher's name" , "adjective" , "ingredient" , "food" , "a number " , "a vegetable", "a container" , "a number" ],
+		"story" : "Pizza was invented by %s, the %s chef. To make pizza, you need to take a lumb of %s and mix it with %s. Smash %s cups of %s, mix in with other ingredients. Place all ingredients in a large %s. Bake for %s minutes and its done. Thank you for playing and thank you for your time! ~ Lindis. Webb"
 		}
 		]
 var current_story
@@ -19,7 +14,7 @@ onready var LabelText = $VBoxContainer/HBoxContainer/Label
 
 func _ready():
 	set_current_story()
-	DisplayText.text = "Welcome to LooneyLips! "
+	DisplayText.text = "Welcome to Coding Bootcamp!! "
 	check_player_words_length()
 	PlayerText.grab_focus()
 
