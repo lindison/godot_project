@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="final_project"
 run/main_scene="res://Main.tscn"
 
+[display]
+
+window/size/fullscreen=true
+
 [input]
 
 up={

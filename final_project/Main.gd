@@ -27,7 +27,7 @@ func new_game():
 	$HUD.update_time(time_left)
 	
 func spawn_coins():
-	for i in range(4 * level):
+	for i in range(22 * level):
 		var c = Coin.instance()
 		$CoinContainer.add_child(c)
 		c.screensize = screensize
